@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+import Icon from './components/icons/Icon'
+import Rules from './components/icons/Rules'
 
 // Rules: 
 // Scissors beats Paper
@@ -31,6 +33,7 @@ function App() {
   const [computerMove, setComputerMove] = useState()
   const [result, setResult] = useState(0)
   // 1 = user win / 2 = computer win / 3 = draw
+  const [rules, setRules] = useState(false)
 
 
   const moves = [
@@ -95,6 +98,15 @@ function App() {
           <div key={move} id={move} onClick={() => handleUserMove(move, name, beats)}>{name}</div>
         ))}
       </div>
+      <button onClick={() => setRules(true)}>Rules</button>
+      {rules ? 
+      <div className="rules">
+        <Rules />
+        <div className="close" onClick={() => setRules(false)}>
+          <Icon name="Close"/>
+        </div>
+      </div>
+      : null}
     </main>
   );
 }

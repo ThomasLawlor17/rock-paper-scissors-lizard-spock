@@ -30,8 +30,8 @@ const IconLogo = () => {
 				/>
 			</defs>
 			<g fill="none" transform="translate(-30 -22)">
-				<use fill="#000" filter="url(#a)" xlink:href="#b" />
-				<use fill="#FFF" xlink:href="#b" />
+				<use fill="#000" filter="url(#a)" />
+				<use fill="#FFF" />
 			</g>
 		</svg>
 	);
