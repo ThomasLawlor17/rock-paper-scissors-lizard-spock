@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import './App.css';
 import Active from './components/Active';
@@ -14,9 +14,8 @@ position: absolute;
 
 .rules-toggle {
   position: absolute;
-  bottom: 7.6%;
-  left: 0;
-  right: 0;
+  bottom: 32px;
+  right: 30px;
   margin: auto;
   width: 130px;
   height: 40px;
@@ -29,6 +28,39 @@ position: absolute;
   letter-spacing: 1px;
   cursor: pointer;
 }
+
+.dim {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  background-color: black;
+  opacity: 0.5;
+  animation: fade-in 0.4s linear;
+}
+
+&:has(.close) .dim {
+  animation: fade-out 0.4s linear;
+}
+
+@keyframes fade-in {
+  0% {opacity: 0}
+  100% {opacity: 0.5}
+}
+@keyframes fade-out {
+  0% {opacity: 0.5}
+  100% {opacity: 0}
+}
+
+@media (max-width: 769px) {
+  .rules-toggle {
+    bottom: 7.6%;
+    left: 0;
+    right: 0;
+  }
+}
+
 `
 
 
@@ -60,6 +92,16 @@ function App() {
   // 1 = user win / 2 = computer win / 3 = draw
   const [rules, setRules] = useState(false)
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		const handleResizeWindow = () => setWidth(window.innerWidth);
+		window.addEventListener("resize", handleResizeWindow);
+		return () => {
+			window.removeEventListener("resize", handleResizeWindow);
+		};
+	}, []);
+
 
   const moves = [
     {move: 1, name: 'Rock', beats: [3, 4]},
@@ -89,10 +131,8 @@ function App() {
   const handleUserMove = (move, name, beats) => {
     setUserMove(name)
     setTimeout(() => {
-      console.log(1)
       let computerMove = handleComputerMove()
       setTimeout(() => {
-        console.log(2)
         if (move === computerMove.move) {
           console.log(move, computerMove.move)
           setResult(3)
@@ -108,9 +148,8 @@ function App() {
             decrement()
           }
         }
-        console.log(result)
-      }, 1000)
-    }, 2000)
+      }, 1500)
+    }, 1500)
   }
 
   const handleRestart = () => {
@@ -124,12 +163,17 @@ function App() {
     <StyledMain className="App">
       <Header playerScore={playerScore}/>
       {userMove ? 
-      <Active userMove={userMove} computerMove={computerMove} result={result} handleRestart={handleRestart} />
+      <Active userMove={userMove} computerMove={computerMove} result={result} handleRestart={handleRestart} width={width} />
       :
-      <MoveSelect handleUserMove={handleUserMove} moves={moves} />
+      <MoveSelect handleUserMove={handleUserMove} moves={moves} width={width} />
       }
       {rules ? 
-      <Rules setRules={setRules}/>
+      <>
+      <Rules setRules={setRules} width={width} />
+      {width > 769 ? 
+      <div className="dim"></div>
+      : ""}
+      </>
       :
       null}
       <button className='rules-toggle' onClick={() => setRules(true)}>RULES</button> 
