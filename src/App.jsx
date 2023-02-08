@@ -85,15 +85,20 @@ position: absolute;
 
 function App() {
 
-  const [playerScore, setPlayerScore] = useState(0)
+    // Persist score after refresh
+    const getInitialScore = () => {
+      let score = sessionStorage.getItem('playerScore') || 0
+      return score
+    }
+
+  const [playerScore, setPlayerScore] = useState(getInitialScore())
   const [userMove, setUserMove] = useState()
   const [computerMove, setComputerMove] = useState()
-  const [result, setResult] = useState(0)
   // 1 = user win / 2 = computer win / 3 = draw
+  const [result, setResult] = useState(0)
   const [rules, setRules] = useState(false)
 
   const [width, setWidth] = useState(window.innerWidth);
-
 	useEffect(() => {
 		const handleResizeWindow = () => setWidth(window.innerWidth);
 		window.addEventListener("resize", handleResizeWindow);
@@ -101,6 +106,11 @@ function App() {
 			window.removeEventListener("resize", handleResizeWindow);
 		};
 	}, []);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("playerScore", playerScore);
+  }, [playerScore]);
+
 
 
   const moves = [
@@ -134,7 +144,6 @@ function App() {
       let computerMove = handleComputerMove()
       setTimeout(() => {
         if (move === computerMove.move) {
-          console.log(move, computerMove.move)
           setResult(3)
         }
         else {

@@ -182,7 +182,7 @@ const Active = ({userMove, computerMove, result, handleRestart, width}) => {
   return (
     <StyledDiv>
         <div className="moves">
-            <div className={userMove && computerMove && !result ? "slide-left move-container" : "move-container"}>
+            <div className={userMove && computerMove && !result && width > 769 ? "slide-left move-container" : "move-container"}>
                 <div className={result === 1 ? "winner move" : "move"} style={{'background': `var(--${userMove}-gradient)`, 'boxShadow': `inset 0 ${width > 769 ? '-10px' : '-6px'} var(--${userMove}-shadow)${result === 1 ? `, 0 0 0 ${width > 769 ? '200px' : '50px'} rgba(31, 55, 86, 0.25), 0 0 0 ${width > 769 ? '120px' : '30px'} rgba(31, 55, 86, 0.45), 0 0 0 ${width > 769 ? '40px' : '10px'} rgba(31, 55, 86,0.85)` : ''}`}}>
                     <Icon name={userMove}/>
                 </div>
@@ -194,7 +194,7 @@ const Active = ({userMove, computerMove, result, handleRestart, width}) => {
             <button className="restart-btn" onClick={handleRestart}>PLAY AGAIN</button>
         </div>
         : null}
-            <div className={userMove && computerMove && !result ? "slide-right move-container" : "move-container"}>
+            <div className={userMove && computerMove && !result && width > 769 ? "slide-right move-container" : "move-container"}>
                 {computerMove ? 
                 <div className={result === 2 ? "winner move" : "move"}  style={{'background': `var(--${computerMove}-gradient)`, 'boxShadow': `inset 0 ${width > 769 ? '-10px' : '-6px'} var(--${computerMove}-shadow)${result === 2 ?  `, 0 0 0 ${width > 769 ? '200px' : '50px'} rgba(31, 55, 86, 0.25), 0 0 0 ${width > 769 ? '120px' : '30px'} rgba(31, 55, 86, 0.45), 0 0 0 ${width > 769 ? '40px' : '10px'} rgba(31, 55, 86,0.85)` : ''}`}}>
                     <Icon name={computerMove}/>
