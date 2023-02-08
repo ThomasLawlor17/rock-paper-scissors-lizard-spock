@@ -60,6 +60,19 @@ position: absolute;
     right: 0;
   }
 }
+a {
+  position: absolute;
+  bottom: 8px;
+  right: 0;
+  left: 0;
+  text-decoration: none;
+  color: #FFF;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    scale: 1.2;
+  }
+}
 
 `
 
@@ -185,7 +198,8 @@ function App() {
       </>
       :
       null}
-      <button className='rules-toggle' onClick={() => setRules(true)}>RULES</button> 
+      <button className='rules-toggle' onClick={() => setRules(true)}>RULES</button>
+      <a href="https://thomaslawlor.com/" className="visible">Thomas Lawlor - 2023</a>
     </StyledMain>
   );
 }
