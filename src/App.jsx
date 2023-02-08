@@ -87,7 +87,7 @@ function App() {
 
     // Persist score after refresh
     const getInitialScore = () => {
-      let score = sessionStorage.getItem('playerScore') || 0
+      let score = parseInt(sessionStorage.getItem('playerScore')) || 0
       return score
     }
 
