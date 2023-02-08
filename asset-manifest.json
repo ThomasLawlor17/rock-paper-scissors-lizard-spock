@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/rock-paper-scissors-lizard-spock/static/css/main.25d8b912.css",
-    "main.js": "/rock-paper-scissors-lizard-spock/static/js/main.c7185ccd.js",
+    "main.js": "/rock-paper-scissors-lizard-spock/static/js/main.2eed380b.js",
     "index.html": "/rock-paper-scissors-lizard-spock/index.html",
     "static/media/bg-pentagon.svg": "/rock-paper-scissors-lizard-spock/static/media/bg-pentagon.02f8aafda2cc4f1553be.svg",
     "main.25d8b912.css.map": "/rock-paper-scissors-lizard-spock/static/css/main.25d8b912.css.map",
-    "main.c7185ccd.js.map": "/rock-paper-scissors-lizard-spock/static/js/main.c7185ccd.js.map"
+    "main.2eed380b.js.map": "/rock-paper-scissors-lizard-spock/static/js/main.2eed380b.js.map"
   },
   "entrypoints": [
     "static/css/main.25d8b912.css",
-    "static/js/main.c7185ccd.js"
+    "static/js/main.2eed380b.js"
   ]
 }
