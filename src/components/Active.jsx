@@ -139,6 +139,7 @@ margin-top: 78px;
             span {
                 letter-spacing: 1px;
                 font-size: 16px;
+                white-space: nowrap;
             }
         }
     }
