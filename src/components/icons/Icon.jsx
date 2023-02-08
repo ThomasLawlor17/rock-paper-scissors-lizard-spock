@@ -22,8 +22,10 @@ const Icon = ({ name }) => {
 			return <IconSpock />;
 		case "Close":
 			return <IconClose />;
-		case 'Icon':
+		case 'Logo':
 			return <IconLogo/>;
+		default:
+			return null
 	}
 };
 

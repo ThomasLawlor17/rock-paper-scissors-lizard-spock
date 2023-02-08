@@ -1,6 +1,6 @@
 import React from "react";
 
-const Rules = () => {
+const IconRules = () => {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" width="340" height="330" className="icon rules-icon">
 			<title>Rules</title>
@@ -272,4 +272,4 @@ const Rules = () => {
 	);
 };
 
-export default Rules;
+export default IconRules;
