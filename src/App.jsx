@@ -11,6 +11,7 @@ width: 100vw;
 height: 100vh;
 background: var(--background);
 position: absolute;
+overflow: hidden;
 
 .rules-toggle {
   position: absolute;
@@ -62,7 +63,7 @@ position: absolute;
 }
 a {
   position: absolute;
-  bottom: 8px;
+  top: 8px;
   right: 0;
   left: 0;
   text-decoration: none;
